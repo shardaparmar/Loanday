@@ -1,4 +1,121 @@
 {{- if .Site.IsServer -}} {{ "<!-- layouts: _default/home.html-->" | safeHTML }} {{- end -}}
 
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Offcanvas Menu Begin -->
+  <div class="offcanvas-menu-overlay"></div>
+  <div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__search">
+      <i class="fa fa-search search-switch"></i>
+    </div>
+    <div class="offcanvas__logo">
+      <a href="#"><img src="/img/logo.png" alt=""></a>
+    </div>
+    <nav class="offcanvas__menu mobile-menu">
+      <ul>
+        {{ range .Site.Menus.main }}
+          {{ if .HasChildren }}             
+            <li><a href="#">Pages</a>
+
+              <ul class="dropdown">
+                {{ range .Children  }}
+                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                {{ end }}
+              </ul>
+              
+            </li>
+          {{ else }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </nav>
+    <div id="mobile-menu-wrap"></div>
+    <ul class="offcanvas__widget">
+      <li><i class="fa fa-map-marker"></i> 96 Ernser Vista Suite 437, NY, US</li>
+      <li><i class="fa fa-phone"></i> (123) 456-78-910</li>
+      <li><i class="fa fa-envelope"></i> Info@colorlib.com</li>
+    </ul>
+    <div class="offcanvas__language">
+      <img src="img/flag.png" alt="">
+      <span>English</span>
+      <i class="fa fa-angle-down"></i>
+      <ul>
+        <li><a href="#">English</a></li>
+        <li><a href="#">Bangla</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- Offcanvas Menu End -->
+
+  <!-- Header Section Begin -->
+  <header class="header">
+    <div class="header__top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9">
+            <ul class="header__top__widget">
+              <li><i class="{{ .Site.Params.data.location_icon }}"></i> {{ .Site.Params.data.location_info }}</li>
+              <li><i class="{{ .Site.Params.data.phone_icon }}"></i>{{ .Site.Params.data.phone_info }}</li>
+              <li><i class="{{ .Site.Params.data.gmail_icon }}"></i> {{ .Site.Params.data.gmail_info }}</li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+            <div class="header__top__language">
+              <img src="{{ .Site.Params.data.flag }}" alt="">
+              <span>English</span>
+              <i class="fa fa-angle-down"></i>
+              <ul>
+                <li><a href="#">{{ .Site.Params.data.english }}</a></li>
+                <li><a href="#">{{ .Site.Params.data.bangla }}</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="header__logo">
+            <a href="#"><img src="/img/logo.png" alt=""></a>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="header__nav">
+            <nav class="header__menu">
+              <ul>
+                {{ range .Site.Menus.main }}
+                  {{ if .HasChildren }}             
+                    <li><a href="#">Pages</a>
+
+                      <ul class="dropdown">
+                        {{ range .Children  }}
+                        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                        {{ end }}
+                      </ul>
+                      
+                    </li>
+                  {{ else }}
+                  <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                  {{ end }}
+                {{ end }}
+              </ul>
+            </nav>
+            <div class="header__search">
+              <i class="fa fa-search search-switch"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="canvas__open">
+        <span class="fa fa-bars"></span>
+      </div>
+    </div>
+  </header>
+  <!-- Header Section End -->
 
 {{- if .Site.IsServer -}} {{ "<!-- layouts: _default/home.html-->" | safeHTML }} {{- end -}}
