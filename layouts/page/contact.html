@@ -1,0 +1,61 @@
+{{ define "main" }}
+  {{- if .Site.IsServer -}} {{ "<!-- layouts: page/contact.html-->" | safeHTML }} {{- end -}}
+    
+    <!-- Breadcrumb Section Begin -->
+    <div class="breadcrumb-option contact-breadcrumb set-bg" data-setbg="/img/breadcrumb/contact-breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Contact Us</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Contact Begin -->
+    <section class="contact spad">
+        <div class="container">
+            <div class="contact__form">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="contact__form__text">
+                            <div class="contact__form__title">
+                                <h2>Get In Touch</h2>
+                                <p>Please contact us or send us an email or go to our forum.</p>
+                            </div>
+                            <form action="#">
+                                <div class="input-list">
+                                    <input type="text" placeholder="Your name">
+                                    <input type="text" placeholder="Your email">
+                                </div>
+                                <textarea placeholder="Your Message"></textarea>
+                                <button type="submit" class="site-btn">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+							{{ range .Params.contact }}
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="contact__address__item">
+                        <h4>{{ .heading }}</h4>
+                        <ul>
+                            <li><i class="{{ .marker_icon }}"></i> {{ .location_info1 }}<br />{{ .location_info2 }}
+                            </li>
+                            <li><i class="{{ .phone_icon }}"></i>{{ .phone_info }}</li>
+                            <li><i class="{{ .envelope_icon }}"></i> {{ .envelope_info }}</li>
+                        </ul>
+                    </div>
+                </div>
+                {{ end}}
+            </div>
+        </div>
+    </section>
+    <!-- Contact End -->
+
+  {{- if .Site.IsServer -}} {{ "<!-- layouts: layout/contact.html-->" | safeHTML }} {{- end -}}
+{{ end }}
